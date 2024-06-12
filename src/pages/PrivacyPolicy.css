@@ -1,0 +1,26 @@
+.privacy-policy{
+   text-align: center;
+ 
+   align-items: center;
+   justify-content: center;
+   margin: 80px 170px;
+}
+.privacy-title{
+    position: relative;
+
+}
+.privacy-title h1{
+    padding: 0px 30px;
+    font-size: 80px;
+    font-weight: 600;
+}
+.privacy-title img{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -2;
+}
+.privacy-policy p{
+    font-weight: 500;
+    font-size: 18px;
+}
