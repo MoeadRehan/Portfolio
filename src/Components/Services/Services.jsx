@@ -18,7 +18,7 @@ const Services = () => {
                     <div className='services-readmore'>
                         <p>Read More</p>
                         <img src={arrow_icon}/>
-                    </div>
+                    </div> 
                 </div>
             })
             }

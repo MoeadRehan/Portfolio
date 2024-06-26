@@ -4,17 +4,25 @@ import mail_icon from '../../assets/mail_icon.svg'
 import location_icon from '../../assets/location_icon.svg'
 import call_icon from '../../assets/call_icon.svg'
 import linkedin_icon from '../../assets/linkedin_icon.svg'
+
 const Contact = () => {
     const onSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
+        for (let [key, value] of formData.entries()) {
+            if (!value) {
+              alert(`${key} field is empty`);
+              return; 
+            }
+          }
     
         formData.append("access_key", "324bc4c5-eddd-4df5-b679-0bd130717113");
     
         const object = Object.fromEntries(formData);
         const json = JSON.stringify(object);
-    
-        const res = await fetch("https://api.web3forms.com/submit", {
+
+        try{
+            const res = await fetch("https://api.web3forms.com/submit", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -25,7 +33,16 @@ const Contact = () => {
     
         if (res.success) {
           alert(res.message);
+          event.target.reset();
         }
+        else{
+            alert("There was an Error", res.message);
+        }
+        }catch(error){
+            console.log("There was an Error", error);
+            alert("There was an error submitting the form");
+        }
+        
       };
 
   return (
@@ -41,7 +58,7 @@ const Contact = () => {
                 <div className='contact-details'>
                     <div className='contact-detail'>
                         <img src={mail_icon} alt="" />
-                        <p>moeadRehan124125@gmail.com</p>
+                        <p>moeadrehan124125@gmail.com</p>
                     </div>
                     <div className='contact-detail'>
                         <img src={call_icon} alt="" />
